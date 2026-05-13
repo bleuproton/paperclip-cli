@@ -6,6 +6,10 @@ import { registerProfileCommands } from './commands/profile.js';
 import { registerCompaniesCommands } from './commands/companies.js';
 import { registerAgentsCommands } from './commands/agents.js';
 import { registerIssuesCommands } from './commands/issues.js';
+import { registerBridgeCommands } from './commands/bridge.js';
+import { registerHermesCommands } from './commands/hermes.js';
+import { registerApiCommand } from './commands/api.js';
+import { registerOpenapiCommand } from './commands/openapi.js';
 import { setJsonMode, error as outputError } from './lib/output.js';
 import { PaperclipError } from './lib/errors.js';
 
@@ -29,6 +33,10 @@ registerProfileCommands(program);
 registerCompaniesCommands(program);
 registerAgentsCommands(program);
 registerIssuesCommands(program);
+registerBridgeCommands(program);
+registerHermesCommands(program);
+registerApiCommand(program);
+registerOpenapiCommand(program);
 
 try {
   await program.parseAsync(process.argv);
