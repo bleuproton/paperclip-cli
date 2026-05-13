@@ -285,6 +285,13 @@ export function registerIssuesCommands(program: Command): void {
           }
 
           lastData = data;
+
+          // Exit on terminal status
+          const terminalStatuses = ['done', 'blocked', 'cancelled'];
+          if (terminalStatuses.includes(data.status)) {
+            console.log(`\n[${new Date().toISOString()}] Issue reached terminal status: ${data.status}`);
+            process.exit(0);
+          }
         };
 
         await poll();
