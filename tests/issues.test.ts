@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { resolveIssueId } from '../src/lib/_stub.js';
+import { resolveIssueIdentifier } from '../src/lib/resolver.js';
 
 // Mock the PaperclipClient
 const createMockClient = (issuesData: any[] = []) => ({
@@ -20,11 +20,11 @@ describe('issues', () => {
     vi.clearAllMocks();
   });
 
-  describe('resolveIssueId', () => {
+  describe('resolveIssueIdentifier', () => {
     it('should return UUID as-is', async () => {
       const uuid = 'a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d';
       const client = createMockClient();
-      const result = await resolveIssueId(uuid, client as any, 'company-id');
+      const result = await resolveIssueIdentifier(client as any, 'company-id', uuid);
       expect(result).toBe(uuid);
     });
 
@@ -36,7 +36,7 @@ describe('issues', () => {
       ];
       const client = createMockClient(issuesData);
 
-      const result = await resolveIssueId('STO-9', client as any, 'company-id');
+      const result = await resolveIssueIdentifier(client as any, 'company-id', 'STO-9');
       expect(result).toBe('uuid-3');
     });
 
@@ -47,8 +47,8 @@ describe('issues', () => {
       const client = createMockClient(issuesData);
 
       await expect(
-        resolveIssueId('STO-999', client as any, 'company-id')
-      ).rejects.toThrow('Issue STO-999 not found');
+        resolveIssueIdentifier(client as any, 'company-id', 'STO-999')
+      ).rejects.toThrow('Issue not found: STO-999');
     });
   });
 

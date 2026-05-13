@@ -17,6 +17,7 @@ describe('api client', () => {
       const mockResponse = { data: 'test' };
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
+        text: async () => JSON.stringify(mockResponse),
         json: async () => mockResponse,
       });
 
@@ -42,6 +43,7 @@ describe('api client', () => {
       const mockResponse = { data: 'test' };
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
+        text: async () => JSON.stringify(mockResponse),
         json: async () => mockResponse,
       });
 
@@ -62,6 +64,7 @@ describe('api client', () => {
       const mockResponse = { id: '123' };
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
+        text: async () => JSON.stringify(mockResponse),
         json: async () => mockResponse,
       });
 
@@ -91,6 +94,7 @@ describe('api client', () => {
       const mockResponse = { updated: true };
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
+        text: async () => JSON.stringify(mockResponse),
         json: async () => mockResponse,
       });
 
@@ -113,6 +117,7 @@ describe('api client', () => {
       const mockResponse = { deleted: true };
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
+        text: async () => JSON.stringify(mockResponse),
         json: async () => mockResponse,
       });
 
@@ -143,7 +148,7 @@ describe('api client', () => {
         token: 'test-token',
       });
 
-      await expect(client.get('/api/missing')).rejects.toThrow('HTTP 404: Not Found');
+      await expect(client.get('/api/missing')).rejects.toThrow('Not Found');
     });
 
     it('should use rawFetch for custom requests', async () => {

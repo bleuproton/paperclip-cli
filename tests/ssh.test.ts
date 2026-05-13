@@ -92,8 +92,12 @@ describe('ssh.ts', () => {
       expect(cp.spawn).toHaveBeenCalledWith('ssh', [
         '-i',
         '/home/user/.ssh/key',
-        '-J',
-        'opc@jump.example.com',
+        '-o',
+        'ProxyCommand=ssh -i /home/user/.ssh/key -W %h:%p opc@jump.example.com',
+        '-o',
+        'StrictHostKeyChecking=accept-new',
+        '-o',
+        'IdentitiesOnly=yes',
         'opc@target.example.com',
         'systemctl status nginx',
       ]);
