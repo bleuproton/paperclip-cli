@@ -60,10 +60,20 @@ $ paperclip issues ls --json | jq '.[].identifier'
 
 ## Install
 
-### npm
+### Install from GitHub (works today, no npm publish needed)
 
 ```bash
-npm install -g @storminterview/paperclip-cli
+npm install -g github:bleuproton/paperclip-cli
+paperclip --version
+```
+
+This clones the repo, runs `npm install`, builds via the `prepare` script,
+and links the `paperclip` binary into your PATH.
+
+### Install via npm (when published)
+
+```bash
+npm install -g @bleuproton/paperclip-cli
 paperclip --version
 ```
 
