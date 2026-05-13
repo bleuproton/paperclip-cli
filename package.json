@@ -1,7 +1,7 @@
 {
   "name": "@bleuproton/paperclip-cli",
   "version": "0.1.0",
-  "description": "End-to-end CLI for controlling Paperclip + storminterview org-bridge + hermes",
+  "description": "End-to-end CLI for controlling Paperclip + examplecorp org-bridge + hermes",
   "type": "module",
   "bin": {
     "paperclip": "dist/index.js"

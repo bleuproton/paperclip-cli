@@ -8,7 +8,7 @@ export function registerAuthCommands(program: Command): void {
   program
     .command('login')
     .description('Authenticate with Paperclip')
-    .option('--instance <url>', 'Paperclip instance URL', 'https://paperclip.storminterview.com')
+    .option('--instance <url>', 'Paperclip instance URL', 'https://paperclip.examplecorp.com')
     .action(async (opts) => {
       const baseUrl = opts.instance;
       const token = await performCliAuth(baseUrl);

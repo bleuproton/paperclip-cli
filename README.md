@@ -1,7 +1,7 @@
 # paperclip-cli
 
 End-to-end command line for [Paperclip](https://paperclip.ai) plus the
-storminterview `org-bridge` and `hermes` services. Built so a human, a Claude
+examplecorp `org-bridge` and `hermes` services. Built so a human, a Claude
 session, or a paseo agent can drive an entire AI organization from one tool.
 
 ```
@@ -114,7 +114,7 @@ paperclip whoami
 paperclip companies ls
 
 # 4. Pick one as active
-paperclip companies use storminterview
+paperclip companies use examplecorp
 
 # 5. Create an issue
 paperclip issues create "Add CSV export" --priority medium
@@ -132,8 +132,8 @@ Lives at `~/.paperclip/config.json`, mode `0600`:
   "currentProfile": "prod",
   "profiles": {
     "prod": {
-      "baseUrl": "https://paperclip.storminterview.com",
-      "token": "pcp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "baseUrl": "https://paperclip.examplecorp.com",
+      "token": "<redacted-token>",
       "tokenSource": "cli-auth",
       "currentCompanyId": "05e4fba7-..."
     },
@@ -143,7 +143,7 @@ Lives at `~/.paperclip/config.json`, mode `0600`:
   "ssh": {
     "jumpHost": "opc@paseo.example.com",
     "target": "opc@10.0.0.5",
-    "keyPath": "~/.ssh/yentral-server"
+    "keyPath": "~/.ssh/id_ed25519"
   }
 }
 ```

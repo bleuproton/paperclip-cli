@@ -81,7 +81,7 @@ describe('Integration Tests', () => {
 
       if (url.includes('/api/companies/') && url.includes('/dashboard')) {
         return new Response(JSON.stringify({
-          company: { id: '05e4fba7-f07d-4216-815c-08984486de5f', name: 'storminterview' },
+          company: { id: '05e4fba7-f07d-4216-815c-08984486de5f', name: 'examplecorp' },
           metrics: { activeAgents: 3, openIssues: 12, completedThisWeek: 8 },
           activity: [
             { timestamp: '2024-01-01T10:00:00Z', description: 'Issue STO-42 created' }
@@ -98,14 +98,14 @@ describe('Integration Tests', () => {
       if (url.match(/\/api\/companies\/[^/]+$/)) {
         return new Response(JSON.stringify({
           id: '05e4fba7-f07d-4216-815c-08984486de5f',
-          name: 'storminterview',
-          slug: 'storminterview'
+          name: 'examplecorp',
+          slug: 'examplecorp'
         }), { status: 200, headers: { 'Content-Type': 'application/json' } });
       }
 
       if (url.match(/\/api\/companies\?/) || url.endsWith('/api/companies')) {
         return new Response(JSON.stringify([
-          { id: '05e4fba7-f07d-4216-815c-08984486de5f', name: 'storminterview', slug: 'storminterview' }
+          { id: '05e4fba7-f07d-4216-815c-08984486de5f', name: 'examplecorp', slug: 'examplecorp' }
         ]), { status: 200, headers: { 'Content-Type': 'application/json' } });
       }
 
@@ -122,18 +122,18 @@ describe('Integration Tests', () => {
   describe('Client', () => {
     it('should make GET requests', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
       const companies = await client.get('/api/companies');
       expect(companies).toHaveLength(1);
-      expect(companies[0].slug).toBe('storminterview');
+      expect(companies[0].slug).toBe('examplecorp');
     });
 
     it('should make POST requests', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -149,7 +149,7 @@ describe('Integration Tests', () => {
   describe('Routines', () => {
     it('should list routines', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -160,7 +160,7 @@ describe('Integration Tests', () => {
 
     it('should create routine', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -176,7 +176,7 @@ describe('Integration Tests', () => {
   describe('Secrets', () => {
     it('should list secrets', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -187,7 +187,7 @@ describe('Integration Tests', () => {
 
     it('should set secret', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -203,7 +203,7 @@ describe('Integration Tests', () => {
   describe('Costs', () => {
     it('should get cost summary', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -219,7 +219,7 @@ describe('Integration Tests', () => {
   describe('Approvals', () => {
     it('should list approvals', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -233,7 +233,7 @@ describe('Integration Tests', () => {
 
     it('should approve request', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -248,7 +248,7 @@ describe('Integration Tests', () => {
   describe('Plugins', () => {
     it('should list installed plugins', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -259,7 +259,7 @@ describe('Integration Tests', () => {
 
     it('should list available plugins', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
@@ -272,12 +272,12 @@ describe('Integration Tests', () => {
   describe('Dashboard', () => {
     it('should get dashboard data', async () => {
       const client = createClient({
-        baseUrl: 'https://paperclip.storminterview.com',
+        baseUrl: 'https://paperclip.examplecorp.com',
         token: 'test-token'
       });
 
       const dashboard = await client.get('/api/companies/05e4fba7-f07d-4216-815c-08984486de5f/dashboard');
-      expect(dashboard.company.name).toBe('storminterview');
+      expect(dashboard.company.name).toBe('examplecorp');
       expect(dashboard.metrics.activeAgents).toBe(3);
     });
   });
