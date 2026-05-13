@@ -10,6 +10,12 @@ import { registerBridgeCommands } from './commands/bridge.js';
 import { registerHermesCommands } from './commands/hermes.js';
 import { registerApiCommand } from './commands/api.js';
 import { registerOpenapiCommand } from './commands/openapi.js';
+import { registerRoutinesCommands } from './commands/routines.js';
+import { registerSecretsCommands } from './commands/secrets.js';
+import { registerCostsCommands } from './commands/costs.js';
+import { registerApprovalsCommands } from './commands/approvals.js';
+import { registerPluginsCommands } from './commands/plugins.js';
+import { registerDashboardCommand } from './commands/dashboard.js';
 import { setJsonMode, error as outputError } from './lib/output.js';
 import { PaperclipError } from './lib/errors.js';
 
@@ -37,6 +43,12 @@ registerBridgeCommands(program);
 registerHermesCommands(program);
 registerApiCommand(program);
 registerOpenapiCommand(program);
+registerRoutinesCommands(program);
+registerSecretsCommands(program);
+registerCostsCommands(program);
+registerApprovalsCommands(program);
+registerPluginsCommands(program);
+registerDashboardCommand(program);
 
 try {
   await program.parseAsync(process.argv);
