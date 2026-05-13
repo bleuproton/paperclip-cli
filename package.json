@@ -1,5 +1,5 @@
 {
-  "name": "@storminterview/paperclip-cli",
+  "name": "@bleuproton/paperclip-cli",
   "version": "0.1.0",
   "description": "End-to-end CLI for controlling Paperclip + storminterview org-bridge + hermes",
   "type": "module",
@@ -20,23 +20,21 @@
   },
   "keywords": [
     "paperclip",
+    "ai-org",
     "cli",
-    "storminterview",
-    "org-bridge",
-    "hermes",
-    "agent",
-    "management"
+    "autonomous",
+    "agents"
   ],
-  "author": "storminterview",
-  "license": "MIT",
+  "author": "bleuproton",
+  "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/storminterview/paperclip-cli.git"
+    "url": "https://github.com/bleuproton/paperclip-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/storminterview/paperclip-cli/issues"
+    "url": "https://github.com/bleuproton/paperclip-cli/issues"
   },
-  "homepage": "https://github.com/storminterview/paperclip-cli#readme",
+  "homepage": "https://github.com/bleuproton/paperclip-cli",
   "engines": {
     "node": ">=20"
   },

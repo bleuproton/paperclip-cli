@@ -26,7 +26,7 @@ const program = new Command();
 program
   .name('paperclip')
   .description('CLI for Paperclip + storminterview org-bridge + hermes')
-  .version('0.0.0')
+  .version('0.1.0')
   .option('--json', 'Output as JSON')
   .option('--profile <name>', 'Use specific profile')
   .option('--company <id>', 'Use specific company')
