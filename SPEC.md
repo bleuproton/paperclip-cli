@@ -230,7 +230,7 @@ Each agent's PR should pass:
 - Merge order: 1 → 2 → 3 → 4
 
 ## Test data (live, safe to use)
-- Storminterview company ID: `<your-company-uuid>`
+- ExampleCorp company ID: `<your-company-uuid>`
 - CEO agent ID: `<your-ceo-agent-uuid>`
 - Test API key (will be replaced by cli-auth in production): `pcp_<REDACTED>`
 - SSH: `opc@<JUMP_HOST>` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/id_ed25519`
