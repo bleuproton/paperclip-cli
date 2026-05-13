@@ -44,8 +44,8 @@ File: `~/.paperclip/config.json`
       "baseUrl": "https://paperclip.storminterview.com",
       "token": "pcp_...",
       "tokenSource": "cli-auth",
-      "userId": "RQoW5dZN93oaWD6I2H5Vu3jaE1TZexyu",
-      "currentCompanyId": "05e4fba7-f07d-4216-815c-08984486de5f"
+      "userId": "<your-user-id>",
+      "currentCompanyId": "<your-company-uuid>"
     }
   },
   "ssh": {
@@ -230,8 +230,8 @@ Each agent's PR should pass:
 - Merge order: 1 → 2 → 3 → 4
 
 ## Test data (live, safe to use)
-- Storminterview company ID: `05e4fba7-f07d-4216-815c-08984486de5f`
-- CEO agent ID: `ae833b7a-04f7-4b78-b4dd-7f0592d61e32`
+- Storminterview company ID: `<your-company-uuid>`
+- CEO agent ID: `<your-ceo-agent-uuid>`
 - Test API key (will be replaced by cli-auth in production): `pcp_<REDACTED>`
 - SSH: `opc@<JUMP_HOST>` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/yentral-server`
 
