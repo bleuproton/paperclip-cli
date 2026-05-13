@@ -5,7 +5,7 @@
 Install globally using npm:
 
 ```bash
-npm install -g @storminterview/paperclip-cli
+npm install -g @bleuproton/paperclip-cli
 ```
 
 Verify installation:
@@ -19,7 +19,7 @@ paperclip --version
 Install the latest version on Linux:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/storminterview/paperclip-cli/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bleuproton/paperclip-cli/main/install.sh | bash
 ```
 
 This script will:
@@ -32,7 +32,7 @@ Manual installation after download:
 
 ```bash
 # Download and extract
-wget https://github.com/storminterview/paperclip-cli/releases/latest/download/paperclip-linux-x64.tar.gz
+wget https://github.com/bleuproton/paperclip-cli/releases/latest/download/paperclip-linux-x64.tar.gz
 tar xzf paperclip-linux-x64.tar.gz
 
 # Move to PATH
@@ -48,14 +48,14 @@ paperclip --version
 ### Using npm
 
 ```bash
-npm install -g @storminterview/paperclip-cli
+npm install -g @bleuproton/paperclip-cli
 ```
 
 ### Manual installation
 
 ```bash
 # Download
-curl -LO https://github.com/storminterview/paperclip-cli/releases/latest/download/paperclip-macos-arm64.tar.gz
+curl -LO https://github.com/bleuproton/paperclip-cli/releases/latest/download/paperclip-macos-arm64.tar.gz
 
 # Extract
 tar xzf paperclip-macos-arm64.tar.gz
@@ -76,7 +76,7 @@ Requirements:
 
 ```bash
 # Clone repository
-git clone https://github.com/storminterview/paperclip-cli.git
+git clone https://github.com/bleuproton/paperclip-cli.git
 cd paperclip-cli
 
 # Install dependencies
@@ -99,14 +99,14 @@ Run without installation using Docker:
 ```bash
 docker run -it --rm \
   -v ~/.paperclip:/root/.paperclip \
-  storminterview/paperclip-cli:latest \
+  bleuproton/paperclip-cli:latest \
   paperclip --help
 ```
 
 Create an alias for convenience:
 
 ```bash
-alias paperclip='docker run -it --rm -v ~/.paperclip:/root/.paperclip storminterview/paperclip-cli:latest paperclip'
+alias paperclip='docker run -it --rm -v ~/.paperclip:/root/.paperclip bleuproton/paperclip-cli:latest paperclip'
 ```
 
 Add to your shell profile (`.bashrc`, `.zshrc`, etc.) to persist.
@@ -131,13 +131,13 @@ paperclip login
 ### npm
 
 ```bash
-npm update -g @storminterview/paperclip-cli
+npm update -g @bleuproton/paperclip-cli
 ```
 
 ### Linux one-liner
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/storminterview/paperclip-cli/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/bleuproton/paperclip-cli/main/install.sh | bash
 ```
 
 ### From source
@@ -154,7 +154,7 @@ npm run build
 ### npm
 
 ```bash
-npm uninstall -g @storminterview/paperclip-cli
+npm uninstall -g @bleuproton/paperclip-cli
 ```
 
 ### Manual
@@ -197,7 +197,7 @@ Or install without sudo using npm:
 
 ```bash
 npm config set prefix ~/.local
-npm install -g @storminterview/paperclip-cli
+npm install -g @bleuproton/paperclip-cli
 ```
 
 Then add `~/.local/bin` to your PATH:

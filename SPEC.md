@@ -1,7 +1,7 @@
 # paperclip-cli — Build Spec (autonomous build, 4 agents in parallel)
 
 ## Mission
-End-to-end CLI for controlling Paperclip + storminterview org-bridge + hermes from terminal.
+End-to-end CLI for controlling Paperclip + examplecorp org-bridge + hermes from terminal.
 Used by humans, by Claude (via skill routing), and by paseo agents.
 
 ## Stack
@@ -12,7 +12,7 @@ Used by humans, by Claude (via skill routing), and by paseo agents.
 - Build: `tsc` → `dist/`; entrypoint `dist/index.js`, bin name `paperclip`
 
 ## Paperclip API (live)
-- Base URL: `https://paperclip.storminterview.com` (prod), `http://localhost:3100` (local)
+- Base URL: `https://paperclip.examplecorp.com` (prod), `http://localhost:3100` (local)
 - Auth: `Authorization: Bearer <token>` — board API key (long-lived) OR session token from cli-auth flow
 - ~300 REST endpoints, see route inventory at end of this file
 - KEY ENDPOINTS:
@@ -41,8 +41,8 @@ File: `~/.paperclip/config.json`
   "currentProfile": "prod",
   "profiles": {
     "prod": {
-      "baseUrl": "https://paperclip.storminterview.com",
-      "token": "pcp_...",
+      "baseUrl": "https://paperclip.examplecorp.com",
+      "token": "<redacted-token>",
       "tokenSource": "cli-auth",
       "userId": "<your-user-id>",
       "currentCompanyId": "<your-company-uuid>"
@@ -51,7 +51,7 @@ File: `~/.paperclip/config.json`
   "ssh": {
     "jumpHost": "opc@<JUMP_HOST>",
     "target": "opc@<PROD_HOST>",
-    "keyPath": "~/.ssh/yentral-server"
+    "keyPath": "~/.ssh/id_ed25519"
   }
 }
 ```
@@ -230,10 +230,10 @@ Each agent's PR should pass:
 - Merge order: 1 → 2 → 3 → 4
 
 ## Test data (live, safe to use)
-- Storminterview company ID: `<your-company-uuid>`
+- ExampleCorp company ID: `<your-company-uuid>`
 - CEO agent ID: `<your-ceo-agent-uuid>`
 - Test API key (will be replaced by cli-auth in production): `pcp_<REDACTED>`
-- SSH: `opc@<JUMP_HOST>` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/yentral-server`
+- SSH: `opc@<JUMP_HOST>` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/id_ed25519`
 
 ## Voice for commits & docs
 Sharp, concrete, no AI vocabulary. Name files and functions. No em dashes. Examples:
