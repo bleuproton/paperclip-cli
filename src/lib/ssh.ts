@@ -24,7 +24,9 @@ export async function sshExec(
 
   const args = [
     '-i', keyPath,
-    '-J', config.jumpHost,
+    '-o', `ProxyCommand=ssh -i ${keyPath} -W %h:%p ${config.jumpHost}`,
+    '-o', 'StrictHostKeyChecking=accept-new',
+    '-o', 'IdentitiesOnly=yes',
     config.target,
     command,
   ];
@@ -66,7 +68,9 @@ export function sshStream(
 
   const args = [
     '-i', keyPath,
-    '-J', config.jumpHost,
+    '-o', `ProxyCommand=ssh -i ${keyPath} -W %h:%p ${config.jumpHost}`,
+    '-o', 'StrictHostKeyChecking=accept-new',
+    '-o', 'IdentitiesOnly=yes',
     config.target,
     command,
   ];
