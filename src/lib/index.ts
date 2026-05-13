@@ -2,7 +2,7 @@ import { resolveIssueIdentifier, resolveAgentName, resolveCompanySlug } from './
 import { createClient } from './client.js';
 import { getActiveProfile as _getActiveProfile, loadConfig as _loadConfig } from './config.js';
 
-export { _getActiveProfile as getActiveProfile, _loadConfig as loadConfig, saveConfig, setActiveProfile } from './config.js';
+export { getActiveProfile, loadConfig, saveConfig, setActiveProfile } from './config.js';
 export { createClient } from './client.js';
 export { table, json, shouldUseJson, statusBadge, ok, warn, error } from './output.js';
 

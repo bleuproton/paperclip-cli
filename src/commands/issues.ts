@@ -103,7 +103,7 @@ export function registerIssuesCommands(program: Command): void {
         if (opts.desc) body.description = opts.desc;
         if (opts.priority) body.priority = opts.priority;
         if (opts.assignee) {
-          body.assigneeAgentId = await resolveAgentId(opts.assignee, client, profile.currentCompanyId);
+          body.assigneeAgentId = await resolveAgentId(profile.currentCompanyId, opts.assignee);
         }
 
         const data = await client.post(`/api/companies/${profile.currentCompanyId}/issues`, body);
@@ -128,7 +128,7 @@ export function registerIssuesCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const issueId = await resolveIssueId(id, client, profile.currentCompanyId);
+        const issueId = await resolveIssueId(profile.currentCompanyId, id);
         const data = await client.get(`/api/issues/${issueId}`);
 
         json(data);
@@ -154,12 +154,12 @@ export function registerIssuesCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const issueId = await resolveIssueId(id, client, profile.currentCompanyId);
+        const issueId = await resolveIssueId(profile.currentCompanyId, id);
 
         const body: any = {};
         if (opts.title) body.title = opts.title;
         if (opts.assignee) {
-          body.assigneeAgentId = await resolveAgentId(opts.assignee, client, profile.currentCompanyId);
+          body.assigneeAgentId = await resolveAgentId(profile.currentCompanyId, opts.assignee);
         }
         if (opts.status) {
           body.status = opts.status;
@@ -207,7 +207,7 @@ export function registerIssuesCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const issueId = await resolveIssueId(id, client, profile.currentCompanyId);
+        const issueId = await resolveIssueId(profile.currentCompanyId, id);
         const data = await client.post(`/api/issues/${issueId}/comments`, { body });
 
         ok(`Added comment to issue ${id}`);
@@ -231,7 +231,7 @@ export function registerIssuesCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const issueId = await resolveIssueId(id, client, profile.currentCompanyId);
+        const issueId = await resolveIssueId(profile.currentCompanyId, id);
         await client.del(`/api/issues/${issueId}`);
 
         ok(`Deleted issue ${id}`);
@@ -254,7 +254,7 @@ export function registerIssuesCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const issueId = await resolveIssueId(id, client, profile.currentCompanyId);
+        const issueId = await resolveIssueId(profile.currentCompanyId, id);
 
         let lastData: any = null;
 

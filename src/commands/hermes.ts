@@ -8,7 +8,7 @@ const SERVICE_NAME = 'hermes.service';
 const TIMER_NAME = 'hermes.timer';
 
 async function status(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -64,7 +64,7 @@ async function status(): Promise<void> {
 }
 
 async function run(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -84,7 +84,7 @@ async function run(): Promise<void> {
 }
 
 async function logs(options: { follow?: boolean; lines?: number }): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);

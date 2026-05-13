@@ -7,7 +7,7 @@ import kleur from 'kleur';
 const SERVICE_NAME = 'org-bridge.service';
 
 async function status(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -49,7 +49,7 @@ async function status(): Promise<void> {
 }
 
 async function logs(options: { follow?: boolean; lines?: number }): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -85,7 +85,7 @@ async function logs(options: { follow?: boolean; lines?: number }): Promise<void
 }
 
 async function restart(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -109,7 +109,7 @@ async function restart(): Promise<void> {
 }
 
 async function pause(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);
@@ -129,7 +129,7 @@ async function pause(): Promise<void> {
 }
 
 async function resume(): Promise<void> {
-  const config = loadConfig();
+  const config = await loadConfig();
   if (!config.ssh) {
     error('SSH config not found in ~/.paperclip/config.json');
     process.exit(5);

@@ -9,7 +9,7 @@ async function apiCall(
   options: { data?: string; query?: string[] },
 ): Promise<void> {
   try {
-    const profile = getActiveProfile();
+    const profile = await getActiveProfile();
     const client = createClient({
       baseUrl: process.env.PAPERCLIP_BASE_URL || profile.baseUrl,
       token: process.env.PAPERCLIP_TOKEN || profile.token,

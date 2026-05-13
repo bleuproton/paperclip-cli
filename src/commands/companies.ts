@@ -51,11 +51,11 @@ export function registerCompaniesCommands(program: Command): void {
       try {
         const profile = await getActiveProfile();
         const client = createClient(profile);
-        const companyId = await resolveCompanyId(slugOrId, client);
+        const companyId = await resolveCompanyId(slugOrId);
 
-        const config = loadConfig();
+        const config = await loadConfig();
         config.profiles[config.currentProfile].currentCompanyId = companyId;
-        saveConfig(config);
+        await saveConfig(config);
 
         ok(`Switched to company ${slugOrId}`);
       } catch (err: any) {

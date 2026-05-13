@@ -60,7 +60,7 @@ export function registerAgentsCommands(program: Command): void {
         }
 
         const client = createClient(profile);
-        const agentId = await resolveAgentId(idOrName, client, profile.currentCompanyId);
+        const agentId = await resolveAgentId(profile.currentCompanyId, idOrName);
         const data = await client.get(`/api/agents/${agentId}`);
 
         json(data);
