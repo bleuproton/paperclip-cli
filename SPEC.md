@@ -49,7 +49,7 @@ File: `~/.paperclip/config.json`
     }
   },
   "ssh": {
-    "jumpHost": "opc@paseo.storminterview.com",
+    "jumpHost": "opc@<JUMP_HOST>",
     "target": "opc@<PROD_HOST>",
     "keyPath": "~/.ssh/yentral-server"
   }
@@ -233,7 +233,7 @@ Each agent's PR should pass:
 - Storminterview company ID: `05e4fba7-f07d-4216-815c-08984486de5f`
 - CEO agent ID: `ae833b7a-04f7-4b78-b4dd-7f0592d61e32`
 - Test API key (will be replaced by cli-auth in production): `pcp_<REDACTED>`
-- SSH: `opc@paseo.storminterview.com` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/yentral-server`
+- SSH: `opc@<JUMP_HOST>` (jump) → `opc@<PROD_HOST>` (prod) with `~/.ssh/yentral-server`
 
 ## Voice for commits & docs
 Sharp, concrete, no AI vocabulary. Name files and functions. No em dashes. Examples:
