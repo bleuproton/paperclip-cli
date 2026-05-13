@@ -14,7 +14,7 @@ export function registerSecretsCommands(program: Command): void {
     .command('ls')
     .description('List all secret keys (values hidden)')
     .action(async () => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -34,7 +34,7 @@ export function registerSecretsCommands(program: Command): void {
     .description('Set a secret value (reads from stdin if value not provided)')
     .option('--file <path>', 'Read value from file (prefix with @)')
     .action(async (key, value, opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -65,7 +65,7 @@ export function registerSecretsCommands(program: Command): void {
     .command('rotate <key>')
     .description('Rotate a secret (generates new value)')
     .action(async (key) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }

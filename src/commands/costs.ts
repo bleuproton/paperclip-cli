@@ -14,7 +14,7 @@ export function registerCostsCommands(program: Command): void {
     .option('--by <grouping>', 'Group by: agent, project, or provider', 'provider')
     .option('--since <window>', 'Time window (e.g., 7d, 30d, 24h)', '7d')
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }

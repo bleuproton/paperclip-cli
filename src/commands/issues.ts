@@ -43,7 +43,7 @@ export function registerIssuesCommands(program: Command): void {
     .option('--limit <n>', 'Limit results', '20')
     .action(async (opts: { status?: string; assignee?: string; limit?: string }) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -92,7 +92,7 @@ export function registerIssuesCommands(program: Command): void {
     .option('--assignee <name>', 'Assignee agent name')
     .action(async (title: string, opts: { desc?: string; priority?: string; assignee?: string }) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -121,7 +121,7 @@ export function registerIssuesCommands(program: Command): void {
     .argument('<id>', 'Issue identifier (STO-N) or UUID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -147,7 +147,7 @@ export function registerIssuesCommands(program: Command): void {
     .option('--title <text>', 'New title')
     .action(async (id: string, opts: { status?: string; assignee?: string; title?: string }) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -200,7 +200,7 @@ export function registerIssuesCommands(program: Command): void {
     .argument('<body>', 'Comment text')
     .action(async (id: string, body: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -224,7 +224,7 @@ export function registerIssuesCommands(program: Command): void {
     .argument('<id>', 'Issue identifier (STO-N) or UUID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -247,7 +247,7 @@ export function registerIssuesCommands(program: Command): void {
     .argument('<id>', 'Issue identifier (STO-N) or UUID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);

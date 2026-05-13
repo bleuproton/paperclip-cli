@@ -22,7 +22,7 @@ export function registerCompaniesCommands(program: Command): void {
     .description('List companies')
     .action(async () => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         const data = await client.get<any[]>('/api/companies');
 
@@ -49,7 +49,7 @@ export function registerCompaniesCommands(program: Command): void {
     .argument('<slug-or-id>', 'Company slug or ID')
     .action(async (slugOrId: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         const companyId = await resolveCompanyId(slugOrId, client);
 

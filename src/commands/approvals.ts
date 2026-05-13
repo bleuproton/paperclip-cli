@@ -14,7 +14,7 @@ export function registerApprovalsCommands(program: Command): void {
     .option('--status <status>', 'Filter by status: pending, approved, rejected')
     .option('--limit <n>', 'Limit results', '20')
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -37,7 +37,7 @@ export function registerApprovalsCommands(program: Command): void {
     .description('Approve a pending request')
     .option('--comment <text>', 'Add a comment')
     .action(async (id, opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -55,7 +55,7 @@ export function registerApprovalsCommands(program: Command): void {
     .description('Reject a pending request')
     .option('--comment <text>', 'Add a comment')
     .action(async (id, opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }

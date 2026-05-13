@@ -20,7 +20,7 @@ export function registerAgentsCommands(program: Command): void {
     .description('List agents')
     .action(async () => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -53,7 +53,7 @@ export function registerAgentsCommands(program: Command): void {
     .argument('<id-or-name>', 'Agent ID or name')
     .action(async (idOrName: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -78,7 +78,7 @@ export function registerAgentsCommands(program: Command): void {
     .option('--reports-to <id>', 'Reports to agent ID')
     .action(async (opts: { role: string; name?: string; reportsTo?: string }) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         if (!profile.currentCompanyId) {
           error('No company selected. Run: paperclip companies use <slug>');
           process.exit(1);
@@ -104,7 +104,7 @@ export function registerAgentsCommands(program: Command): void {
     .argument('<id>', 'Agent ID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         await client.post(`/api/agents/${id}/pause`);
         ok(`Paused agent ${id}`);
@@ -120,7 +120,7 @@ export function registerAgentsCommands(program: Command): void {
     .argument('<id>', 'Agent ID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         await client.post(`/api/agents/${id}/resume`);
         ok(`Resumed agent ${id}`);
@@ -136,7 +136,7 @@ export function registerAgentsCommands(program: Command): void {
     .argument('<id>', 'Agent ID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         await client.post(`/api/agents/${id}/wakeup`);
         ok(`Woke up agent ${id}`);
@@ -152,7 +152,7 @@ export function registerAgentsCommands(program: Command): void {
     .argument('<id>', 'Agent ID')
     .action(async (id: string) => {
       try {
-        const profile = getActiveProfile();
+        const profile = await getActiveProfile();
         const client = createClient(profile);
         await client.post(`/api/agents/${id}/terminate`);
         ok(`Terminated agent ${id}`);

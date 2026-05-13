@@ -13,7 +13,7 @@ export function registerRoutinesCommands(program: Command): void {
     .description('List all routines for current company')
     .option('--active', 'Show only active routines')
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -38,7 +38,7 @@ export function registerRoutinesCommands(program: Command): void {
     .option('--action <action>', 'Action to execute')
     .option('--enabled', 'Enable routine immediately', true)
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -62,7 +62,7 @@ export function registerRoutinesCommands(program: Command): void {
     .command('run <id>')
     .description('Manually trigger a routine')
     .action(async (id) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -86,7 +86,7 @@ export function registerRoutinesCommands(program: Command): void {
     .description('List all triggers')
     .option('--routine <id>', 'Filter by routine ID')
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }

@@ -9,7 +9,7 @@ export function registerDashboardCommand(program: Command): void {
     .command('dashboard')
     .description('Show company dashboard with metrics and activity')
     .action(async () => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }

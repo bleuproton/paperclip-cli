@@ -13,7 +13,7 @@ export function registerPluginsCommands(program: Command): void {
     .description('List installed plugins')
     .option('--available', 'Show available plugins (not installed)')
     .action(async (opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -37,7 +37,7 @@ export function registerPluginsCommands(program: Command): void {
     .description('Install a plugin')
     .option('--version <version>', 'Specific version to install')
     .action(async (name, opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -59,7 +59,7 @@ export function registerPluginsCommands(program: Command): void {
     .command('enable <id>')
     .description('Enable a plugin')
     .action(async (id) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -74,7 +74,7 @@ export function registerPluginsCommands(program: Command): void {
     .command('disable <id>')
     .description('Disable a plugin')
     .action(async (id) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
@@ -90,7 +90,7 @@ export function registerPluginsCommands(program: Command): void {
     .description('Manually trigger a plugin action')
     .option('--data <json>', 'JSON data to pass to plugin')
     .action(async (id, opts) => {
-      const profile = getActiveProfile();
+      const profile = await getActiveProfile();
       if (!profile.currentCompanyId) {
         throw new Error('No company selected. Run: paperclip companies use <id>');
       }
