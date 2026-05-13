@@ -1,10 +1,7 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import open from 'open';
 import { createClient } from './client.js';
 import { AuthError } from './errors.js';
 import ora from 'ora';
-
-const execAsync = promisify(exec);
 
 interface Challenge {
   id: string;
@@ -30,7 +27,11 @@ export async function performCliAuth(baseUrl: string): Promise<string> {
   console.log('Waiting for approval...');
 
   // Open browser
-  await openBrowser(challenge.approvalUrl);
+  try {
+    await open(challenge.approvalUrl);
+  } catch (error) {
+    console.log(`Failed to open browser automatically. Please visit: ${challenge.approvalUrl}`);
+  }
 
   // Poll for approval
   const spinner = ora('Waiting for approval').start();
@@ -45,32 +46,16 @@ export async function performCliAuth(baseUrl: string): Promise<string> {
   }
 }
 
-async function openBrowser(url: string): Promise<void> {
-  const platform = process.platform;
-
-  try {
-    if (platform === 'darwin') {
-      await execAsync(`open "${url}"`);
-    } else if (platform === 'win32') {
-      await execAsync(`start "${url}"`);
-    } else {
-      await execAsync(`xdg-open "${url}"`);
-    }
-  } catch (error) {
-    console.log(`Failed to open browser automatically. Please visit: ${url}`);
-  }
-}
-
 async function pollForApproval(
   baseUrl: string,
   challengeId: string,
   token: string,
-  maxAttempts = 60
+  maxAttempts = 120
 ): Promise<string> {
   const client = createClient({ baseUrl, token: '' });
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    await sleep(2000); // Poll every 2 seconds
+    await sleep(1000); // Poll every 1 second
 
     try {
       const status = await client.get<ChallengeStatus>(
